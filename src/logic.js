@@ -1,10 +1,10 @@
-export function filterCelestials(items, query="", kind="all", favorites=null) {
+export function filterCelestials(items, query="", family="all", favorites=null) {
   const term = query.trim().toLocaleLowerCase();
   return items.filter(item => {
-    const matchesTerm = !term || (item.name + " " + item.kind + " " + item.description).toLocaleLowerCase().includes(term);
-    const matchesKind = kind === "all" || item.kind === kind;
+    const matchesTerm = !term || (item.name + " " + item.kind + " " + item.family + " " + item.description).toLocaleLowerCase().includes(term);
+    const matchesFamily = family === "all" || item.family === family;
     const matchesFavorite = favorites === null || favorites.has(item.id);
-    return matchesTerm && matchesKind && matchesFavorite;
+    return matchesTerm && matchesFamily && matchesFavorite;
   });
 }
 
