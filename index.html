@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070b18">
+  <meta name="description" content="Explore a tiny universe of 30 animated celestial characters.">
+  <title>Tiny Planetarium — A pocket atlas of the stars</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="wordmark" href="#"><span class="mark">✳</span><span>TINY <b>PLANETARIUM</b></span></a>
+    <div class="top-actions"><span class="live"><i></i> LIVE STAR MAP</span><button id="export" class="text-button">Export favorites ↗</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">FIELD NOTES FROM THE INFINITE</p>
+        <h1>A universe<br>of <em>little wonders.</em></h1>
+        <p class="hero-text">Thirty cosmic companions are waiting to be discovered. Wander between planets, stars, moons and mysterious things in between.</p>
+        <a class="hero-link" href="#atlas">Open the atlas <span>↓</span></a>
+        <div class="hero-meta"><span>30 OBJECTS</span><span>·</span><span>7 CELESTIAL FAMILIES</span><span>·</span><span>0 WRONG TURNS</span></div>
+      </div>
+      <div class="sky-scene" aria-hidden="true">
+        <div class="sky-glow"></div><div class="sky-orbit orbit-a"></div><div class="sky-orbit orbit-b"></div><div class="sky-orbit orbit-c"></div>
+        <object class="sky-body sky-saturn" data="./celestials/saturn.svg" type="image/svg+xml"></object>
+        <object class="sky-body sky-nova" data="./celestials/nova.svg" type="image/svg+xml"></object>
+        <object class="sky-body sky-luna" data="./celestials/luna.svg" type="image/svg+xml"></object>
+        <span class="star-dot dot-a">✦</span><span class="star-dot dot-b">✧</span><span class="star-dot dot-c">·</span><span class="star-dot dot-d">✦</span>
+      </div>
+      <div class="hero-bottom"><span>SECTOR 01 / THE NEARBY</span><span>SCROLL TO EXPLORE</span></div>
+    </section>
+
+    <section class="atlas" id="atlas">
+      <div class="section-title"><div><p class="eyebrow">THE CELESTIAL INDEX / 001</p><h2>Meet your neighbors.</h2></div><p class="section-note">Every dot has a story.<br>Every orbit has a personality.</p></div>
+      <div class="controls">
+        <label class="search"><span>⌕</span><input id="query" type="search" placeholder="Search the universe..." autocomplete="off"><kbd>/</kbd></label>
+        <label class="kind-wrap"><span class="sr-only">Filter by celestial family</span><select id="kind"><option value="all">All families</option><option value="star">Stars</option><option value="moon">Moons</option><option value="planet">Planets</option><option value="comet">Comets</option><option value="dwarf">Dwarf worlds</option><option value="constellation">Constellations</option><option value="nebula">Nebulae</option></select></label>
+        <button id="favorites-only" class="pill-button" aria-pressed="false">♡ Favorites</button>
+        <button id="surprise" class="pill-button accent">✧ Find me one</button>
+        <button id="motion" class="pill-button motion" aria-pressed="false">Ⅱ Pause</button>
+      </div>
+      <div class="list-status"><p id="result-count" aria-live="polite">30 celestial objects</p><span>SELECT A WORLD TO OPEN ITS FIELD NOTES</span></div>
+      <div class="world-grid" id="world-grid"></div>
+      <div id="empty" class="empty" hidden><span>∅</span><h3>Nothing in this orbit.</h3><p>Try a different search or turn off the favorites filter.</p></div>
+    </section>
+  </main>
+  <footer><a class="wordmark" href="#"><span class="mark">✳</span><span>TINY <b>PLANETARIUM</b></span></a><p>A little place to look up from the everyday.</p><span class="footer-code">ATLAS REVISION 001</span></footer>
+</div>
+
+<dialog id="detail-dialog" class="detail-dialog">
+  <form method="dialog"><button class="close" aria-label="Close details">×</button></form>
+  <div class="detail-art"><object id="detail-art" data="./celestials/sol.svg" type="image/svg+xml" aria-label=""></object></div>
+  <div class="detail-copy"><p id="detail-kind" class="eyebrow"></p><h2 id="detail-name"></h2><p id="detail-description"></p><div class="detail-actions"><button id="detail-favorite" class="pill-button">♡ Save to favorites</button><span id="detail-id" class="detail-id"></span></div></div>
+</dialog>
+<script type="module" src="./src/app.js"></script>
+</body>
+</html>
