@@ -1,0 +1,11 @@
+import { cp, mkdir, rm } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const out = resolve(root, "dist");
+await rm(out, { recursive: true, force: true });
+await mkdir(out, { recursive: true });
+await cp(resolve(root, "index.html"), resolve(out, "index.html"));
+await cp(resolve(root, "src"), resolve(out, "src"), { recursive: true });
+await cp(resolve(root, "public/celestials"), resolve(out, "celestials"), { recursive: true });
+console.log("Built Tiny Planetarium into dist/");
